@@ -1,0 +1,16 @@
+# https://docs.getdbt.com/docs/building-a-dbt-project/testing-and-documentation/documentation
+version: 2
+
+sources:
+  - name: salesforce_mindbody_prep
+    database: mindbody
+    schema: salesforce_mindbody_prep
+    tables:
+      - name: account
+
+models:
+  - name: stg_account
+    columns:
+      - name: id
+        tests:
+          - not_null
