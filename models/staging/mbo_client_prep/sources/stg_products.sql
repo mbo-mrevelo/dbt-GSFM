@@ -3,6 +3,8 @@ select
     productid,
     itemtypeid,
     count,
-    introductory
+    introductory,
+    wsshow,
+    sellinmarketplace
 
 from {{ source('mbo_client_prep', 'products') }}
