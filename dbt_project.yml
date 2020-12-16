@@ -32,7 +32,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  my_new_project:
+  GSFM:
       # Applies to all files under models/example/
-      example:
+      intermediate:
           materialized: ephemeral
+      staging:
+          materialized: ephemeral
+
+vars:
+    start_date: add_months(date_trunc('month', current_date), -1)
+    end_date: date_trunc('month', current_date)

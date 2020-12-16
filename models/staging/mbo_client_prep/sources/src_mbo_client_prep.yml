@@ -1,0 +1,132 @@
+# https://docs.getdbt.com/docs/building-a-dbt-project/testing-and-documentation/documentation
+version: 2
+
+sources:
+  - name: mbo_client_prep
+    database: mindbody
+    schema: mbo_client_prep
+    tables:
+      - name: clients
+      - name: tbleftschedule
+      - name: wsmaster_location
+      - name: wsmaster_studios
+      - name: tblgenopts
+      - name: agreements_useragreementsessionstate
+      - name: agreements_useragreementstate
+      - name: tblwaitlist
+      - name: tblclasses
+      - name: tblclassdescriptions
+      - name: tblclasssch
+      - name: tbltypegroup
+      - name: tblcctrans
+      - name: tblcontactlogs
+      - name: sales
+      - name: sales_details
+      - name: products
+
+models:
+  - name: stg_active_clients
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_efts
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+      - name: locationid
+        tests:
+          - not_null
+  - name: stg_studios
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_locations
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+      - name: locationid
+        tests:
+          - not_null
+  - name: stg_tblgenopts
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_useragreementsessionstate
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_useragreementstate
+    columns:
+      - name: useragreementstateid
+        tests:
+          - not_null
+  - name: stg_tblclasses
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+      - name: locationid
+        tests:
+          - not_null
+  - name: stg_tblwaitlist
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_transactions
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+      - name: locationid
+        tests:
+          - not_null
+  - name: stg_smsemail
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_new_clients
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_sales
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+      - name: locationid
+        tests:
+          - not_null
+  - name: stg_sales_details
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_products
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_tblclasssch
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_tblclassdescriptions
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_tbltypegroup
+    columns:
+      - name: studioid
+        tests:
+          - not_null
