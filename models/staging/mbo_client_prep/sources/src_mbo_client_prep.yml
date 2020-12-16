@@ -18,13 +18,15 @@ sources:
       - name: tblclassdescriptions
       - name: tblclasssch
       - name: tbltypegroup
+      - name: tblvisittypes
+      - name: tbltrainerschedules
       - name: tblcctrans
       - name: tblcontactlogs
       - name: tblreservation
       - name: sales
       - name: sales_details
       - name: products
-      - name: viit_data
+      - name: visit_data
 
 models:
   - name: stg_active_clients
@@ -146,5 +148,15 @@ models:
         tests:
           - not_null
       - name: location
+        tests:
+          - not_null
+  - name: stg_tblvisittypes
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_tbltrainerschedules
+    columns:
+      - name: studioid
         tests:
           - not_null

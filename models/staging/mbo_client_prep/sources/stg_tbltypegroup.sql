@@ -3,7 +3,8 @@ select
     typegroupid,
     wsreservation,
     wsenrollment,
-    wsdisable
+    wsdisable,
+    wsappointment
 
 from {{ source('mbo_client_prep', 'tbltypegroup') }}
 

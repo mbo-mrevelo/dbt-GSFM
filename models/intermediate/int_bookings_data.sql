@@ -109,7 +109,7 @@ select
             when webscheduler = 1
             then 1
             else 0
-        end) as onlinebookings,
+        end) as cntonlinebookings,
     count(*) as cntbookings
 
 from bookings

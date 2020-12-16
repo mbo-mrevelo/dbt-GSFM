@@ -5,6 +5,10 @@ select
     count,
     introductory,
     wsshow,
-    sellinmarketplace
+    sellinmarketplace,
+    discontinued,
+    deleted,
+    type,
+    description
 
 from {{ source('mbo_client_prep', 'products') }}
