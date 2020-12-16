@@ -2,25 +2,25 @@ with
 
 tblclassdescriptions as (
 
-    select * from {{ ref('tblclassdescriptions') }}
+    select * from {{ ref('stg_tblclassdescriptions') }}
 
 ),
 
 tbltypegroup as (
 
-    select * from {{ ref('tbltypegroup') }}
+    select * from {{ ref('stg_tbltypegroup') }}
 
 ),
 
 tblclasses as (
 
-    select * from {{ ref('tblclasses') }}
+    select * from {{ ref('stg_tblclasses') }}
 
 ),
 
 tblclasssch as (
 
-    select * from {{ ref('tblclasssch') }}
+    select * from {{ ref('stg_tblclasssch') }}
 
 )
 
