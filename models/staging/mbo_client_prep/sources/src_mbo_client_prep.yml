@@ -20,9 +20,11 @@ sources:
       - name: tbltypegroup
       - name: tblcctrans
       - name: tblcontactlogs
+      - name: tblreservation
       - name: sales
       - name: sales_details
       - name: products
+      - name: viit_data
 
 models:
   - name: stg_active_clients
@@ -128,5 +130,21 @@ models:
   - name: stg_tbltypegroup
     columns:
       - name: studioid
+        tests:
+          - not_null
+  - name: stg_visit_data
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+      - name: location
+        tests:
+          - not_null
+  - name: stg_tblreservation
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+      - name: location
         tests:
           - not_null
