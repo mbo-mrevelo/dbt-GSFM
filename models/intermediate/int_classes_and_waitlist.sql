@@ -10,6 +10,9 @@ tblwaitlist as (
 
     select * from {{ ref('stg_tblwaitlist') }}
 
+    where createddatetimeutc >= {{ var('start_date') }}
+        and createddatetimeutc < {{ var('end_date') }}
+
 )
 
 select

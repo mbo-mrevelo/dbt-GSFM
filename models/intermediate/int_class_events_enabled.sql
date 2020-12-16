@@ -4,11 +4,15 @@ tblclassdescriptions as (
 
     select * from {{ ref('stg_tblclassdescriptions') }}
 
+    where active = 1
+
 ),
 
 tbltypegroup as (
 
     select * from {{ ref('stg_tbltypegroup') }}
+
+    where wsreservation = 1 or wsenrollment = 1
 
 ),
 
@@ -16,11 +20,17 @@ tblclasses as (
 
     select * from {{ ref('stg_tblclasses') }}
 
+    where classdatestart >= {{ var('start_date') }}
+        and classdateend < {{ var('end_date') }}
+
 ),
 
 tblclasssch as (
 
     select * from {{ ref('stg_tblclasssch') }}
+
+    where classdate >= {{ var('start_date') }}
+        and classdate < {{ var('end_date') }}
 
 )
 
