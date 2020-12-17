@@ -1,8 +1,4 @@
-date_spine as (
-
-    select * from {{ ref('stg_filtered_date_spine') }}
-
-),
+with
 
 sales as (
 
