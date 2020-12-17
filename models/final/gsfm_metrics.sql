@@ -1,3 +1,5 @@
+{{ config(materialized = 'view') }}
+
 with
 
 dates_studios_and_locations as (
