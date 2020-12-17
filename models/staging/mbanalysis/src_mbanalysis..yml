@@ -1,0 +1,19 @@
+# https://docs.getdbt.com/docs/building-a-dbt-project/testing-and-documentation/documentation
+version: 2
+
+sources:
+  - name: mbanalysis
+    database: mbanalysis
+    schema: gmv
+    tables:
+      - name: gmvdaily
+
+models:
+  - name: stg_gmv
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+      - name: locationid
+        tests:
+          - not_null
