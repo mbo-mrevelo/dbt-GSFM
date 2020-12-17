@@ -23,10 +23,13 @@ sources:
       - name: tblcctrans
       - name: tblcontactlogs
       - name: tblreservation
+      - name: tblpayments
       - name: sales
       - name: sales_details
       - name: products
       - name: visit_data
+      - name: wsmaster_tblregions_etl
+      - name: payment_types
 
 models:
   - name: stg_active_clients
@@ -156,6 +159,21 @@ models:
         tests:
           - not_null
   - name: stg_tbltrainerschedules
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_wsmaster_tblregions_etl
+    columns:
+      - name: regionsid
+        tests:
+          - not_null
+  - name: stg_tblpayments
+    columns:
+      - name: studioid
+        tests:
+          - not_null
+  - name: stg_payment_types
     columns:
       - name: studioid
         tests:

@@ -1,5 +1,6 @@
 select
     createddatetimeutc,
+    saledate,
     studioid,
     locationid,
     saleid,
