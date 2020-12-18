@@ -3,6 +3,6 @@ select
     saleid,
     sdid,
     productid,
-    introoffertype,
+    introoffertype
 
 from {{ source('mbo_client_prep', 'sales_details') }}

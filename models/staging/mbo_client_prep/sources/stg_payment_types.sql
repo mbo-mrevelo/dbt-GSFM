@@ -1,6 +1,6 @@
 select
     studioid,
-    item#,
+    "item#",
     casheq
 
 from {{ source('mbo_client_prep', 'payment_types') }}

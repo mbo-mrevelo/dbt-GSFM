@@ -34,10 +34,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   GSFM:
       # Applies to all files under models/example/
-      intermediate:
-          materialized: ephemeral
-      staging:
-          materialized: ephemeral
+    intermediate:
+      materialized: ephemeral
+    staging:
+      materialized: ephemeral
+
 
 vars:
     start_date: add_months(date_trunc('month', current_date), -1)

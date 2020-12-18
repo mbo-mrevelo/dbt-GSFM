@@ -29,7 +29,7 @@ tbltrainerschedules as (
 
     where unavailable = 0
 
-)
+),
 
 trainers_and_dates as (
 

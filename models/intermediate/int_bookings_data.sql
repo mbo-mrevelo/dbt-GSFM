@@ -44,7 +44,7 @@ bookings as (
     from visit_data
 
     inner join stg_tbltypegroup
-        on tbltypegroup studioid = visit_data.studioid
+        on tbltypegroup.studioid = visit_data.studioid
             and tbltypegroup.typegroupid = visit_data.typegroupid
 
     union all
@@ -91,7 +91,7 @@ select
             else 0
         end) as consumermodebookings,
     sum(case
-            when (sourceid = 4788 or restsource ilike any ('%connect%', 'testclient')
+            when (sourceid = 4788 or restsource ilike any ('%connect%', 'testclient'))
             then 1
             else 0
         end) as mbappbookings,
