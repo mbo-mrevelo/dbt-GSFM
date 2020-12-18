@@ -132,7 +132,7 @@ select
     dates_studios_and_locations.industry as vertical,
     dates_studios_and_locations.sitecreationdate::date as sitecreationdate,
     dates_studios_and_locations.softwarelevel as producttier,
-    dates_studios_and_locations.regionid
+    dates_studios_and_locations.regionid,
 
 -- salesforce_account
     salesforce_account.salesforceid18,
