@@ -41,5 +41,5 @@ models:
 
 
 vars:
-    start_date: add_months(date_trunc('month', current_date), -1)
-    end_date: date_trunc('month', current_date)
+    start_date: dateadd('day', -1, current_date)
+    end_date: current_date
