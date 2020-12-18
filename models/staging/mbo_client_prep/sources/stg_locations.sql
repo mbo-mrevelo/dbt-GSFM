@@ -1,8 +1,8 @@
 select
-    studioid,
-	locationid,
-	mbaccountnumber,
-	masterlocid,
+    try_to_numeric(studioid) as studioid,
+	try_to_numeric(locationid) as locationid,
+	try_to_numeric(mbaccountnumber) as mbaccountnumber,
+	try_to_numeric(masterlocid) as masterlocid,
 	case
 		when (mid is not null and mid != '') or (tid is not null and tid != '') then 1
 		else 0

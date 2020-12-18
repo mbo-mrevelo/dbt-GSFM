@@ -1,5 +1,5 @@
 select
-    studioid,
+    try_to_numeric(studioid) as studioid,
     studioname,
     dbpath,
     studioshort,
@@ -33,7 +33,7 @@ select
         when trim(swtype) = 'BE' then 'beauty'
     end as industry,
     mbfoptin,
-    regionid
+    try_to_numeric(regionid) as regionid
 
 from {{ source('mbo_client_prep', 'wsmaster_studios') }}
 
