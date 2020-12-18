@@ -48,10 +48,10 @@ from products
 
 inner join tbltypegroup
     on tbltypegroup.studioid = products.studioid
-        and tbltypegroup.typegroupid = products.typegroupid
+        and tbltypegroup.typegroupid = products.typegroup
 
 inner join date_spine
-    on date_spine.metricdate >= procucts.createddatetimeutc
+    on date_spine.metricdate >= products.createddatetimeutc
 
 group by
     metricdate,

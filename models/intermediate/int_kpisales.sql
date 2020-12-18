@@ -37,7 +37,7 @@ inner join tblpayments
 
 inner join payment_types
     on payment_types.studioid = tblpayments.studioid
-        and payment_types."item#" = tblpayments.paymentmethod
+        and payment_types.payment_method_id = tblpayments.paymentmethod
 
 group by
     metricdate,

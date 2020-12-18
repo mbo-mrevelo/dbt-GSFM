@@ -4,6 +4,7 @@ select
     location,
     sourceid,
     restsource,
-    webscheduler
+    webscheduler,
+    visittype
 
 from {{ source('mbo_client_prep', 'tblreservation') }}

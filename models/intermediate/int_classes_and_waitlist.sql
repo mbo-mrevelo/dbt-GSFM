@@ -16,7 +16,7 @@ tblwaitlist as (
 )
 
 select
-    tblwaitlist.metricdate,
+    date_trunc('day', tblwaitlist.createddatetimeutc) as metricdate,
     tblwaitlist.studioid,
     tblclasses.locationid,
     count(distinct tblwaitlist.classid) as cntdistinctclasses,
@@ -29,6 +29,6 @@ inner join tblclasses
         and tblclasses.classid = tblwaitlist.classid
 
 group by
-    tblwaitlist.metricdate,
+    metricdate,
     tblwaitlist.studioid,
     tblclasses.locationid

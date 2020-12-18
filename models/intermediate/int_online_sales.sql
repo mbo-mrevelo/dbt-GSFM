@@ -19,13 +19,13 @@ products as (
 )
 
 select
-    date_trunc('day', sales.creationdatetimeutc) as metricdate,
+    date_trunc('day', sales.createddatetimeutc) as metricdate,
     sales.studioid,
     coalesce(count(distinct case
                                 when products.itemtypeid = 1
                                     and (sales_details.introoffertype > 1 or products.introductory = 1)
                                     and (sales.restsource ilike any ('%engage%', 'fitnessmobileapps')
-                                        or sourceid in (2785,9340,9341,11178,11179,11841,13803))
+                                        or sales.sourceid in (2785,9340,9341,11178,11179,11841,13803))
                                 then sales_details.sdid
                                 else null
                             end
@@ -34,7 +34,7 @@ select
                                 when products.itemtypeid = 1
                                     and sales_details.introoffertype > 1
                                     and (sales.restsource ilike any ('%connect%', 'testclient')
-                                        or sourceid = 4788)
+                                        or sales.sourceid = 4788)
                                 then sales_details.sdid
                                 else null
                             end
@@ -42,9 +42,9 @@ select
     coalesce(count(distinct case
                                 when products.itemtypeid = 1
                                     and sales_details.introoffertype > 1
-                                    and promotedinconnect = 1
+                                    and sales_details.promotedinconnect = 1
                                     and (sales.restsource ilike any ('%connect%', 'testclient', 'lymber api gateway client')
-                                        or sourceid = 4788)
+                                        or sales.sourceid = 4788)
                                 then sales_details.sdid
                                 else null
                             end
@@ -58,7 +58,7 @@ select
     coalesce(count(distinct case
                                 when products.itemtypeid = 1
                                     and (sales_details.introoffertype > 1 or products.introductory = 1)
-                                    and sourceid is null
+                                    and sales.sourceid is null
                                     and (sales.restsource is null or lower(sales.restsource) = 'mindbody core software')
                                     and sales.locationid = 98
                                 then sales_details.sdid
@@ -68,7 +68,7 @@ select
     coalesce(count(distinct case
                                 when products.itemtypeid = 1
                                     and (sales_details.introoffertype > 1 or products.introductory = 1)
-                                    and sourceid in (3342,313,284,18281)
+                                    and sales.sourceid in (3342,313,284,18281)
                                 then sales_details.sdid
                                 else null
                             end
@@ -93,8 +93,8 @@ select
                     ) , 0) as cntonlinesales,
     count(distinct
                 case
-                    when sales.restsource ilike ('%engage%', 'fitnessmobileapps') or
-                        sourceid in (2785,9340,9341,11178,11179,11841,13803)
+                    when sales.restsource ilike any ('%engage%', 'fitnessmobileapps') or
+                        sales.sourceid in (2785,9340,9341,11178,11179,11841,13803)
                     then sales.saleid
                     else null
                 end
@@ -102,7 +102,7 @@ select
 
 from sales
 
-inner join sales_deails on sales_details.studioid = sales.studioid and sales_details.saleid = sales.saleid
+inner join sales_details on sales_details.studioid = sales.studioid and sales_details.saleid = sales.saleid
 
 inner join products on products.studioid = sales_details.studioid and products.productid = sales_details.productid
 

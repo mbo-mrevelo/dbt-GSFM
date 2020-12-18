@@ -4,7 +4,8 @@ select
     wsreservation,
     wsenrollment,
     wsdisable,
-    wsappointment
+    wsappointment,
+    active
 
 from {{ source('mbo_client_prep', 'tbltypegroup') }}
 

@@ -72,6 +72,6 @@ inner join tblclasssch
         and tblclasssch.classid = tblclasses.classid
 
 group by
-    metrcidate,
+    metricdate,
     tblclassdescriptions.studioid,
     tblclasses.locationid

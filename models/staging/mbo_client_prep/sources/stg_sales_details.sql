@@ -3,6 +3,8 @@ select
     saleid,
     sdid,
     productid,
-    introoffertype
+    introoffertype,
+    promotedinconnect,
+    dynamicservicepricingoption
 
 from {{ source('mbo_client_prep', 'sales_details') }}

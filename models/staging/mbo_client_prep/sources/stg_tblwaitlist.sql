@@ -1,5 +1,5 @@
 select
-    date_trunc('day', createddatetimeutc) as metricdate,
+    createddatetimeutc,
     studioid,
     classid,
     clientid

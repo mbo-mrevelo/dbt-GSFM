@@ -9,6 +9,8 @@ select
     discontinued,
     deleted,
     type,
-    description
+    typegroup,
+    description,
+    createddatetimeutc
 
 from {{ source('mbo_client_prep', 'products') }}

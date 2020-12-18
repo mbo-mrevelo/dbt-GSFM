@@ -43,9 +43,9 @@ bookings as (
     
     from visit_data
 
-    inner join stg_tbltypegroup
+    inner join tbltypegroup
         on tbltypegroup.studioid = visit_data.studioid
-            and tbltypegroup.typegroupid = visit_data.typegroupid
+            and tbltypegroup.typegroupid = visit_data.typegroup
 
     union all
 
