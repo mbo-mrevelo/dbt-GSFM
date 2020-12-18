@@ -1,7 +1,7 @@
 select
     studioid,
     locationid,
-    transdate,
+    transdate as metricdate,
     sum(totalgmv) as totalgmv
 
 from {{ source('mbanalysis', 'gmvdaily') }}
