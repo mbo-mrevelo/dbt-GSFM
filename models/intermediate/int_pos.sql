@@ -51,7 +51,7 @@ inner join tbltypegroup
         and tbltypegroup.typegroupid = products.typegroup
 
 inner join date_spine
-    on date_spine.metricdate >= products.createddatetimeutc
+    on date_spine.metricdate >= products.createddatetimeutc::date
 
 group by
     metricdate,

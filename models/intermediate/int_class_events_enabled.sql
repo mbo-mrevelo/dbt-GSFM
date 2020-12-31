@@ -20,8 +20,8 @@ tblclasses as (
 
     select * from {{ ref('stg_tblclasses') }}
 
-    where classdatestart >= {{ var('start_date') }}
-        and classdateend < {{ var('end_date') }}
+    where classdatestart::date >= {{ var('start_date') }}
+        and classdateend::date < {{ var('end_date') }}
 
 ),
 
@@ -29,8 +29,8 @@ tblclasssch as (
 
     select * from {{ ref('stg_tblclasssch') }}
 
-    where classdate >= {{ var('start_date') }}
-        and classdate < {{ var('end_date') }}
+    where classdate::date >= {{ var('start_date') }}
+        and classdate::date < {{ var('end_date') }}
 
 )
 

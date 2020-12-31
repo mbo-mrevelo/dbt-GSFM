@@ -25,7 +25,7 @@ select
 
 from recentagreement 
 
-inner join date_spine on date_spine.metricdate >= recentagreement.dateadded
+inner join date_spine on date_spine.metricdate >= recentagreement.dateadded::date
 
 inner join useragreementstate on useragreementstate.useragreementstateid = recentagreement.useragreementstateid
 

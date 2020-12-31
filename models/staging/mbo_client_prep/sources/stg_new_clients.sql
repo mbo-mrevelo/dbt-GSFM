@@ -11,8 +11,8 @@ select
 
 from {{ source('mbo_client_prep', 'clients') }}
 
-where createddatetimeutc >= {{ var('start_date') }}
-    and createddatetimeutc < {{ var('end_date') }}
+where createddatetimeutc::date >= {{ var('start_date') }}
+    and createddatetimeutc::date < {{ var('end_date') }}
     and clientid > 1
     and issystem = 0
     and deleted = 0

@@ -4,8 +4,8 @@ visit_data as (
 
     select * from {{ ref('stg_visit_data') }}
 
-    where classdate >= {{ var('start_date') }}
-        and classdate < {{ var('end_date') }}
+    where classdate::date >= {{ var('start_date') }}
+        and classdate::date < {{ var('end_date') }}
         and cancelled = 0
         and missed = 0
         and visittype != 1

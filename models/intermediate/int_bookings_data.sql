@@ -5,8 +5,8 @@ visit_data as (
     select * from {{ ref('stg_visit_data') }}
 
     where (visittype != 1 or visittype is null)
-        and createddatetimeutc >= {{ var('start_date') }}
-        and createddatetimeutc < {{ var('end_date') }}
+        and createddatetimeutc::date >= {{ var('start_date') }}
+        and createddatetimeutc::date < {{ var('end_date') }}
 
 ),
 
@@ -23,8 +23,8 @@ tblreservation as (
     select * from {{ ref('stg_tblreservation') }}
 
     where visittype != -1
-        and createddatetimeutc >= {{ var('start_date') }}
-        and createddatetimeutc < {{ var('end_date') }} 
+        and createddatetimeutc::date >= {{ var('start_date') }}
+        and createddatetimeutc::date < {{ var('end_date') }} 
 
 ),
 

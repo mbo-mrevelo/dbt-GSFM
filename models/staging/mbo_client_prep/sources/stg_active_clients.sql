@@ -1,11 +1,5 @@
 with
 
-date_spine as (
-
-    select * from {{ ref('stg_filtered_date_spine') }}
-
-),
-
 clients as (
 
     select
@@ -21,6 +15,7 @@ clients as (
         and mergeclientid is null
         and inactive = 0
         and isprospect != 1
+        and createddatetimeutc::date <= {{ var('end_date') }}
 
     group by
         createddatetimeutc,
@@ -29,13 +24,13 @@ clients as (
 )
 
 select
-    date_spine.metricdate,
+    clients.createddatetimeutc::date as metricdate,
     clients.studioid,
-    clients.cnttotalclients
+    sum(clients.cnttotalclients) over (partition by studioid order by metricdate) as cnttotalclients
 
 from clients
 
-inner join date_spine on date_spine.metricdate >= clients.createddatetimeutc
+qualify last_value(clients.createddatetimeutc) over (partition by clients.studioid order by clients.createddatetimeutc) = clients.createddatetimeutc
 
 
  

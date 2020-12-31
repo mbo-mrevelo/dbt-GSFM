@@ -69,8 +69,8 @@ inner join products
     on products.studioid = sales_details.studioid
         and products.productid = sales_details.productid
 
-where sales.createddatetimeutc >= {{ var('start_date') }}
-    and sales.createddatetimeutc < {{ var('end_date') }}
+where sales.createddatetimeutc::date >= {{ var('start_date') }}
+    and sales.createddatetimeutc::date < {{ var('end_date') }}
 
 group by
     metricdate,

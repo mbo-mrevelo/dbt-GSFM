@@ -4,8 +4,8 @@ tblcctrans as (
 
     select * from {{ ref('stg_tblcctrans') }}
 
-    where authtime >= {{ var('start_date') }}
-        and authtime < {{ var('end_date') }}
+    where authtime::date >= {{ var('start_date') }}
+        and authtime::date < {{ var('end_date') }}
         and settled = 1
         and achlastfour is null
 

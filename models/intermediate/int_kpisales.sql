@@ -4,8 +4,8 @@ sales as (
 
     select * from {{ ref('stg_sales') }}
 
-    where saledate >= {{ var('start_date') }}
-        and saledate < {{ var('end_date') }} 
+    where saledate::date >= {{ var('start_date') }}
+        and saledate::date < {{ var('end_date') }} 
 
 ),
 

@@ -40,7 +40,7 @@ trainers_and_dates as (
     from tbltrainerschedules
 
     inner join date_spine
-        on date_spine.metricdate <= tbltrainerschedules.enddate
+        on date_spine.metricdate <= tbltrainerschedules.enddate::date
 
 )
 
