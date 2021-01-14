@@ -38,6 +38,9 @@ models:
       materialized: ephemeral
     staging:
       materialized: ephemeral
+    final:
+      +post-hook:
+        - "{{ extract_table_to_s3_csv(s3_stage='gsfm_test' , file_format='gsfm_test') }}"
 
 
 vars:

@@ -120,12 +120,6 @@ gmv as (
 
     select * from {{ ref('stg_gmv')}}
 
-),
-
-apiactivity as (
-
-    select * from {{ ref('int_apiactivity')}}
-
 )
 
 select
@@ -305,14 +299,6 @@ select
 -- gmv
     coalesce(gmv.totalgmv, 0) as totalgmv,
 
--- apiactivity
-    apiactivity.brandedwebenabled,
-    apiactivity.brandedwebutilized,
-    apiactivity.brandedwebqualified,
-    apiactivity.apipartnersenabled,
-    apiactivity.apipartnersutilized,
-    apiactivity.apipartnersqualified,
-
     current_timestamp() as etlcreateddatetimeutc
 
 from dates_studios_and_locations
@@ -399,7 +385,3 @@ left outer join gmv
     on gmv.metricdate = dates_studios_and_locations.metricdate
         and gmv.studioid = dates_studios_and_locations.studioid
         and gmv.locationid = dates_studios_and_locations.locationid
-
-left outer join apiactivity
-    on apiactivity.studioid = dates_studios_and_locations.studioid
-        and apiactivity.metricdate = dates_studios_and_locations.metricdate

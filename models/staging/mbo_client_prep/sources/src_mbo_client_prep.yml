@@ -30,7 +30,6 @@ sources:
       - name: visit_data
       - name: wsmaster_tblregions_etl
       - name: payment_types
-      - name: apiactivitylog
 
 models:
   - name: stg_active_clients
@@ -175,11 +174,6 @@ models:
         tests:
           - not_null
   - name: stg_payment_types
-    columns:
-      - name: studioid
-        tests:
-          - not_null
-  - name: stg_apiactivitylog
     columns:
       - name: studioid
         tests:
